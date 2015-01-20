@@ -1,0 +1,209 @@
+Reference Javascript
+
+<!-- to have it alert something -->
+
+alert(" ")
+
+<!-- to have it alert and then have a box for a response -->
+
+prompt(" ")
+
+<!-- to create a variable -->
+
+var name = [prompt("What is your name?")]
+
+<!-- To put something in the console -->
+
+console.log("The user's name is " + name)
+
+<!-- you can add a value to an already named variable such as -->
+
+name = "Nick"
+
+<!-- If/else -->
+
+if(true) {
+	console.log("if block")
+} (true means that it will actually put "if block" in the console)
+(javascript defines 0 as false)
+
+<!-- Will continue to loop -->
+
+while(true){
+	console.log('hello world')
+}
+
+<!-- End the loop after 10 'prints' -->
+
+var counter = 10
+
+while(counter){
+	console.log('hello world')
+	counter = counter - 1
+} (will first evaluate counter as true so 'hello world'. Then it will take counter and subtract 1, making it 9 and then while will evaluate counter as 9 (which is true) and repeat)
+
+<!-- can rewrite with this -->
+for (var counter=10;counter;counter=counter-1){
+	console.log('hello')
+}
+for (var counter=10(we "initialized");counter(evaluated as true);counter=counter-1(since counter was "true", we ran this)){
+	console.log('hello', counter)
+}
+
+<!-- another example of same -->
+while(counter){
+	console.log('hello world')
+	console.log('hi')
+	counter = counter - 1
+}
+
+while(prompt("what is your name?")) {
+	console.log("got your name ")
+} (will keep prompting for your name)
+
+<!-- use % to get the value of remainder in division -->
+example:
+11%3=2
+
+<!-- to use an array -->
+
+var friends= ["Nick", "Michael", "Amit"]
+console.log(friends.length) (this will bring back the value 3)
+
+var friends= ["Nick", "Michael", "Amit", [true, matt, bob]]
+console.log(friends.length) (this will bring back the value 4)
+
+console.log(friends[0]) (this will bring back Nick)
+console.log(friends[10]) (this will bring back Undefined)
+
+var friendnumber=1
+console.log(friends[friendnumber]) (this will bring back Michael)
+
+<!-- This is an object -->
+
+var me = {
+	first_name: "Jordan",
+	last_name: "Hammond"
+}
+
+console.log(me.first_name) (this will bring Jordan)
+
+var me = {
+	first_name: "Jordan",
+	last_name: "Hammond",
+	"Employee Number": 1
+}
+
+console.log(me["Employee Number"]) (this will bring back 1)
+
+var key = "first_name"
+
+console.log(me[key]) (this will bring back Jordan)
+
+/*****************/
+
+var me = {
+	first_name: "Jordan",
+	last_name: "Hammond",
+	"Employee Number": 1
+}
+
+me.first_name="James"
+
+console.log(me["Employee Number"])
+
+var key = "first_name"
+
+console.log(me[key]) (this will bring back Jordan)
+
+var debug = function(red) {
+	console.log("debug", red)
+} 
+
+sayHello()
+
+
+var x =1
+debug("x has been set") (this will bring back debug x has been set)
+
+var debug = function(red) {
+	console.log("debug", red)
+} 
+
+var doublenumber= function (num) {
+	return num * 2
+}
+
+debug(doublenumber(7)) (this will bring back debug 14)
+
+
+var myColor = "blue";
+console.log("myColor before myFunc()", myColor);
+
+function myFunc () {
+  myColor = "yellow";
+  var myNumber = 42;
+  console.log("myColor inside myFunc()", myColor);
+}
+
+myFunc();
+console.log("myColor after myFunc()", myColor); (this will output yellow)
+
+
+var myColor = "blue";
+console.log("myColor before myFunc()", myColor);
+
+function myFunc () {
+  var myColor = "yellow";
+  var myNumber = 42;
+  console.log("myColor inside myFunc()", myColor);
+}
+
+myFunc();
+console.log("myColor after myFunc()", myColor); (this will output blue)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
