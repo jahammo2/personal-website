@@ -1,0 +1,600 @@
+/* combinators: */
+
+css:
+div > span
+html:
+<div>
+	<span>
+
+css:
+li:first-of-type + li
+html:
+<ul>
+	<li>
+	<li>red</li>**target
+
+css:
+p ~ span
+html:
+<span></span>
+<p></p>
+<code></code>
+<span>**target</span>
+
+css:
+[class^="top"] {
+    background: yellow;
+}
+html:
+<p class="muffin top"></p>
+<h1 class="top gun">**target</h1>
+<h2 class="up top"></h2>
+<h3 class="top">**target</h3>
+
+/* link classes */
+
+css:
+.first-name:focus
+html:
+<input class="first-name" value="I'll be red when focused">**target (will change when clicked on)
+
+css:
+a:link (unvisited)
+a:visited
+a:hover
+a:active
+
+/* nth-child */
+
+css:
+span:nth-child (an+b)
+
+/* To target a link in the same page and have it change colors and shit */
+
+css:
+:target
+
+html:
+<li><a href="#s1"></a>words</li>
+...
+<div id="s1">
+	words
+</div>
+
+/* input stuff */
+
+css:
+input:enabled
+input:disabled
+
+html:
+<input type="text" name="name" placeholder="name">
+<input type="text" name="email" placeholder="email" disabled>
+<input name="radio" id="radio1" type="radio"><label for="radio1">Option 1</label> (buttons)
+<input type="submit" name="submit">
+<label>Chocolate
+<input type="checkbox" name="favfood" value="chocolate">
+</label>
+/*Add a default='' to fill in the input with what would be default*/
+
+<label><input type="radio" name="gender" value="Female">check if female:</label>
+
+/* font-variant */
+
+http://www.w3.org/Style/Examples/007/fonts.en.html
+text-transform: capitalize;(Capitalize First Letter Of Every Word)
+
+/* Causes text to not wrap in a paragraph: */
+
+white-space: nowrap;
+white-space: pre; (will do exactly what you have in your html)
+
+/* Awesome ways to use columns in CSS */
+
+.main {
+
+	-webkit-column-gap: 3em;
+	-webkit-column-rule: 2px dotted darkblue;
+
+	-webkit-columns: 250px(this works as max-width) 3;
+
+}
+
+img {
+	display: block;
+	margin: 1.5em 0;
+	max-width: 100%;
+}
+
+h1 {
+	-webkit-column-span: all; /* so the heading goes over all the columns */
+}
+
+/* flexbox makes "boxes" look nice in CSS */
+
+
+.nav, .main {
+	display: -webkit-flex;
+}
+
+
+.col {
+	-webkit-flex: 1;
+}
+
+.col-c {
+	-webkit-flex: 2; /* means this box will be 2x larger */
+	-webkit-order: -1; /* means this box will go first */
+}
+
+/* so once this drops below 999px, it will revert all the boxes in .main to a column */
+
+@media screen and (max-width: 999px) {
+	.main {
+		-webkit-flex-direction: column; 
+	}
+}
+
+(use these in html to say the same things)
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/wider.css" media="screen and (max-width: 768px) and (min-width: 481px)">
+	<link rel="stylesheet" href="css/narrow.css" media="screen and (max-width: 480px)">
+
+	or (in your style.css)
+
+	@import url("wider.css") screen and (max-width:768px) and (min-width: 481px);
+@import url("narrow.css") screen and (max-width: 480px);
+
+
+/* Changes the cursor to that hand thing in CSS */
+cursor: pointer;
+
+/* box shadows in CSS */
+
+box-shadow: inset (use this value to create an "inner shadow") 20px (means this is how far the 
+	shadow is to the right, if negative it's how far to the left) 20px (means this is how far 
+	the shadow is to the bottom, if negative it's how far to the top) 20px (the larger this 
+	value is, the blurrier and lighter the shadow is) 20px (the larger this is, the more the 
+	shadow spreads out from where the box has been set by the first two values) blue (this is 
+	the color of the shadow), (adding that comma makes it so you can have multiple shadows);
+
+/* How to make your shit transition into new shit in CSS */
+
+.box {
+	margin: auto;
+	width: 300px;
+	height: 300px;
+	border-radius: 15px;
+	background: steelblue;
+	cursor: pointer;
+	-webkit-transition-duration: 2s (in the current code, this is how long it takes to transition back to it''s original state from hover);
+	   -moz-transition-duration: 2s;
+	    -ms-transition-duration: 2s;
+	     -o-transition-duration: 2s;
+	        transition-duration: 2s;
+
+ }
+
+.box:hover {
+	background: lightcoral;
+	-webkit-border-radius: 50%;
+	        border-radius: 50%;
+	-webkit-transition-property (this is determining the order for duration): background, border-radius;
+	   -moz-transition-property: background, border-radius;
+	    -ms-transition-property: background, border-radius;
+	     -o-transition-property: background, border-radius;
+	        transition-property: background, border-radius;
+	-webkit-transition-duration: .3s (this is how long it takes for the color transition), 1s (this is how long it takes the border-radius to transition);
+	   -moz-transition-duration: .3s, 1s;
+	    -ms-transition-duration: .3s, 1s;
+	     -o-transition-duration: .3s, 1s;
+	        transition-duration: .3s, 1s;
+}
+
+/* add this so that it applies to everything: */
+transition-property: all;
+
+/* This will cause your transition to start slowly and then pick accelerate over the span of time you specified */
+	-webkit-transition-duration: 1s;
+	   -moz-transition-duration: 1s;
+	    -ms-transition-duration: 1s;
+	     -o-transition-duration: 1s;
+	        transition-duration: 1s;
+	-webkit-transition-timing-function: ease-in;
+	   -moz-transition-timing-function: ease-in;
+	    -ms-transition-timing-function: ease-in;
+	     -o-transition-timing-function: ease-in;
+	        transition-timing-function: ease-in;
+
+/* This will cause your transition to happen in four steps over 1 second */
+	-webkit-transition-duration: 1s;
+	   -moz-transition-duration: 1s;
+	    -ms-transition-duration: 1s;
+	     -o-transition-duration: 1s;
+	        transition-duration: 1s;
+	-webkit-transition-timing-function: steps(4, end);
+	   -moz-transition-timing-function: steps(4, end);
+	    -ms-transition-timing-function: steps(4, end);
+	     -o-transition-timing-function: steps(4, end);
+	        transition-timing-function: steps(4, end);
+
+/* delay the transition */
+-webkit-transition-delay: 1s;
+   -moz-transition-delay: 1s;
+    -ms-transition-delay: 1s;
+     -o-transition-delay: 1s;
+        transition-delay: 1s;
+
+/* shorthand version */
+	-webkit-transition: margin(property) 1s(duration) ease-in(timing function) 0s(delay), background 1s ease 1s;
+	   -moz-transition: margin 1s ease-in 0s, background 1s ease 1s;
+	    -ms-transition: margin 1s ease-in 0s, background 1s ease 1s;
+	     -o-transition: margin 1s ease-in 0s, background 1s ease 1s;
+	        transition: margin 1s ease-in 0s, background 1s ease 1s;
+
+/* How to make a "box" move or turn */
+
+	-webkit-transform: rotate(2turn);
+		-webkit-transform-origin: top right;	
+	-webkit-transform: scale(1.5);
+		-webkit-transform: translateX(-200px);
+	-webkit-transform: translateX(100%);(moves it by 100% of the element's size in the right direction)
+		-webkit-transform: translate(200px, 100px); (moves 200px in the X direction, 100px in the Y direction)
+
+/* shorthand */
+transform: scale(1.5) rotate(1turn) translate(50%, -25%);
+
+/* Allows you to transform from a certain "point" */
+	-webkit-transform-origin: 100% 100%; (This is causing the rotation point to be at the bottom right)
+
+/* To do a 3D transformation */
+
+.wrap:hover {
+	-webkit-transform: rotateX(-45deg); (the X is what makes it 3D)
+	-webkit-transform: rotate3d(1,1,0,65deg); (rotates it 65 degrees in the X and Y axis)
+}
+
+body {
+	-webkit-perspective: 800px; (this makes it look right)
+}
+
+	-webkit-perspective-origin: center right;(this causes the perspective "point" to be at the center right)
+		-webkit-transform: translateZ(200px);(works a "zoom in" or out)
+	-webkit-transform: translate3d(100px,50px,150px); (will move 100px to the right, 50 px to the left, and 150px forward)
+	    -webkit-transform: scaleZ(2) translateZ(100px);(causes it to zoom in 200px)
+	-webkit-transform-style: preserve-3d;(causes all sister elements to work in 3D space)
+
+/* Do this if you want there to be another image on the back if you fully rotate an image */
+	transition: -webkit-transform 1s ease-in;
+	-webkit-transform-style: preserve-3d;
+}
+
+.wrap div {
+	position: absolute;
+	-webkit-backface-visibility: hidden;
+	
+}
+.side-b {
+	-webkit-transform: rotateY(-180deg); 
+}
+
+.wrap:hover {
+	-webkit-transform: rotateY(-1turn);
+}
+
+/* How to create a "loading bar" */
+
+(this whole set up basically just causes the .prog-bar to "fill" and then you adjust it)
+.prog-bar {
+	height: 60px;
+	border-radius: 5px;
+	background: -webkit-repeating-linear-gradient(-45deg, rgba(255,255,255,.1), rgba(255,255,255,0) 12px), -webkit-linear-gradient(#F5A8A8, #F08080);
+	-webkit-animation-name: slide; 
+	-webkit-animation-duration: 2s;
+}
+
+@-webkit-keyframes slide {
+	from {
+		width: 0%
+	}
+	to {
+		width: 100%
+	}
+}
+
+@-webkit-keyframes slide {
+	0% {
+		width: 0%;
+	}
+	30% { 
+		width: 50%
+	} (at the 30% point of the animation, it will be 50% done)
+	100% {
+		width: 100%;
+	}
+}
+
+@-webkit-keyframes slide {
+	0% {
+		width: 0%;
+	}
+	30%, 60% { 
+		width: 50%
+	}
+	70% {
+		width: 80%
+	}
+	100% {
+		width: 100%;
+	}
+} (you can use commas to force it to "stop" from the 30% to the 60% point)
+
+	-webkit-animaiton-timing-function: ease-out; (so it will slow down towards the end)
+
+/* shorthand */
+.boat {
+	-webkit-animation: rock-boat 3s ease-in;
+}
+
+/* if you want it to happen more than once */
+-webkit-animation-iteration-count: 2; (can be any number or infinite)
+
+/* further shorthand */
+.boat {
+	-webkit-animation: rock-boat 3s ease-in infinite;
+}
+
+/* to make a boat "rock" */
+	50% {
+		-webkit-transform: rotate(-5deg) translateY(-10px)
+	}
+
+/*/* the ::after pseudo-element can be used to insert some content after the CONTENT of an element. */*/
+.boat::after {
+	-webkit-animation: steam 4s(timing function) 2s(delay);
+}
+
+/*typically, when using the after pseudo-selector, you need content:' ' in that element::after*/
+
+/* Causes the background to move to make it appear other things are moving */
+body {
+	-webkit-animation: bg-move 8s ease-out;
+}
+
+@-webkit-keyframes bg-move {
+	0% { background-position: 100% -460px; } (-460px is what has already been stated in main.css. And 100% is just the X-value)
+	100% {background-position: -350% -460px; }
+}
+
+-webkit-animation-direction: reverse; (does what you think)
+-webkit-animation-direction: alternate; (after 8s, it will go reverse. Then after 8s, it will go forward. Make your animation infinite)
+-webkit-animation-direction: alternate-reverse; (begins in reverse)
+
+/* So your image doesn't "jump" when it's 8s are over */
+-webkit-animation-fill-mode: forwards; (use both instead of forwards for a greater effect)
+
+(shorthand)
+-webkit-animation: bg-move 8s ease-out both;
+
+How to bring another image into the same picture
+.mike {
+	-webkit-animation: mike-move 6s 6s ease-out both,
+					   mike-float 3.2s infinite;
+
+@-webkit-keyframes mike-move {
+	100% {left:12%;} (brings the image to the 12% point of the picture (leftside) after the 6s duration)
+}
+
+@-webkit-keyframes mike-float {
+	50% {-webkit-transform: rotateZ(5deg) translateY(-5px);} (this can be any % from 0-100. Since 3.2s is < 6s, we're good.)
+}
+
+Logical arguments with queries
+
+@media not screen and (monochrome) {
+	body{
+		background: red;
+	}
+} (This is saying 'not' to both screen and monochrome)
+(use 'only' too, especially if you need to support older browsers)
+
+/* To cause something to move to the right of it if it is in single column */
+
+margin-left: 2% (arbitrary number)
+
+/* To force your page to adapt to mobile devices */
+
+/* Put this in html [below your title tag] */
+<meta name="viewport" content="width=device-width">
+
+/* Use device-width in CSS because you won't be changing the width of your browswer on a mobile device */
+@media screen and (max-device-width: 479px)
+
+/* To deal with orientations */
+@media screen and (orientation: portrait) (be careful though bc this can be difficult with browsers. Just stick with min-widths and max-widths)
+
+/* Use this when dealing with higher resolutions? */
+@media screen and (device-pixel-ratio: 2) (1 css pixel will be depicted as 2 pixels) (throw in a min or max too)
+
+screen and (min-resolution: 192dpi) (resolution ) (for example, the newest iphone is technically 320x568. But it has twice the pixel density so it actually comes in at 640x1136) (1=96dpi)
+
+@media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 192dpi) (the , works as 'or')
+
+use @media screen and (-webkit-min-device-pixel-ratio: 1.5), screen and (min-resolution: 144dpi) as a default.
+
+
+/* For print media queries */
+
+@media print {
+	* {
+		background: transparent !important;
+		color: black !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+	.main-nav,
+	.sidebar,
+	.comments,
+	.main-footer {
+		display: none;
+	}
+	.main-header {
+		margin-bottom: 0;
+		border: none;
+		text-align: center;
+	}
+	a[href^="http:"]::after {
+		content: " [" attr(href)"]"; (so the link displays out fully next to the link name)
+		color: blue;
+	}
+	@page {
+		margin: .5cm;
+	} (adds a .5cm margin to the edges)
+	@page :first {
+		margin-top: 2cm;
+	}
+	h2, ul {
+		page-break-after: avoid;
+	} (this tells it to avoid a page break after a h2 or ul)
+	p, ul {
+		orphans: 3; (single words or stray lines that are left alone after a page break)
+		widows: 3; (single words or stray lines that fall before a page break)
+		font-size: 11pt;
+	}
+}
+
+/* How to make a drop down box in HTML */
+
+                <li class="required">
+                  <label for="regarding">Regarding</abbr></label>
+                  <select id="regarding" name="regarding">
+                    <option value=""></option>
+                    <option value="catalog">Catalog Request</option>
+                    <option value="problem">Problem with my furniture</option>
+                    <option value="gratitude">An expression of my gratitude</option>
+                    <option value="other">Something else</option>
+                  </select>
+                </li>
+
+/* submit button */
+
+              <ol>
+                <li class="commit"><input type="submit" value="Submit"></li>
+              </ol>
+
+/* comment box */
+
+                <li class="required">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message"></textarea>
+                </li>
+              </ol>
+            </fieldset>
+
+
+/*HTML Blockquote*/
+<blockquote>cool stuff </blockquote>
+
+/*HTML escape character*/
+&gt; makes a greater than sign. &lt;, &uarr;(up arrow), &larr;, &copy;
+
+/*Make a sweet arrow in css*/
+border: 200px solid red;
+background-color: blue transparent transparent transparent;
+/*border is outside of width and height*/
+
+/*google "css triangle maker" for website*/
+
+/*css hexadecimal color explanation*/
+color: #ff0000;
+/*the ff is 255 and that f is specially "15"*/
+
+/*if text goes outside the border and you don't want it to show*/
+overflow: hidden;
+/*overflow: auto is another option*/
+
+/*The difference between scroll and auto is that the scroll bar appears and could mess with your
+dimensions*/
+
+/*you don't just have to use % for widths if the screen shrinks*/
+max-width: 400px;
+/*does the same thing as (90% is arbitrary)*/
+max-width: 90%;
+
+/*Always (almost) put position: relative with*/
+z-index: ;
+
+/*With position:fixed or absolute, use these to help:*/
+top: 0;
+left: 0;
+right: 0;
+/*This is saying that it's top is at position 0 (very top), left is at position 0 (very left)...*/
+/*and possibly...*/
+margin: 0;
+
+/*Also, make sure the parent element has position: relative; before setting*/
+position: absolute;
+
+/*This means that the element is starting 4em below its parent*/
+top: 4em;
+
+/*Put this at the top of a css doc to take out the page's default stylesheet*/
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+/*Tabling in css, here's a good example:*/
+
+/*Html*/
+
+/*Css*/
+
+/*How to record info*/
+/*html*/
+<body>
+	<form method="post" action="url">
+/*	put inputs in here*/
+	</form>
+</body>
+
+/*This will cause a line of text to arbitrarily break right before the border*/
+{
+word-break: break-word;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
